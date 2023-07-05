@@ -27,6 +27,8 @@ public choixModalite:any;
 public resultado!:string;
 public chordsProgression!: string;
   public arr: any[] = [];
+  public chordsInMinor:any
+  public chordsInMajor: any
 
     chosenGamme = () => {
   this.choixGamme = this.objNotesMineur[Math.floor(Math.random() * 12)].note;
@@ -42,7 +44,9 @@ public chordsProgression!: string;
 
 
   console.log(choixEtModalite(1), choixEtModalite(4), choixEtModalite(1), choixEtModalite(5));
-  this.chordsProgression = choixEtModalite(1) + " " + choixEtModalite(4) +" " + choixEtModalite(1) +" " + choixEtModalite(5)
+  this.chordsProgression = choixEtModalite(1) + " " + choixEtModalite(4) +" " + choixEtModalite(1) +" " + choixEtModalite(5);
+  console.log("this.chordsProgression: ", this.chordsProgression);
+  console.log("this.choixGamme: ", this.choixGamme);
 
   console.log('Key.majorKey("this.choixGamme"): ',
   Key.majorKey(this.choixGamme).triads[0],
@@ -50,17 +54,36 @@ public chordsProgression!: string;
   Key.majorKey(this.choixGamme).triads[0],
   Key.majorKey(this.choixGamme).triads[4]);
 
+
   console.log('Key.min("this.choixGamme"): ',
   Key.minorKey(this.choixGamme).natural.triads[0],
-  Key.minorKey(this.choixGamme).natural.triads[1],
-  Key.minorKey(this.choixGamme).natural.triads[2],
   Key.minorKey(this.choixGamme).natural.triads[3],
   Key.minorKey(this.choixGamme).natural.triads[0],
   Key.minorKey(this.choixGamme).natural.triads[4]);
 
+  this.chordsInMajor = Key.majorKey(this.choixGamme).triads[0] + " " +
+  Key.majorKey(this.choixGamme).triads[3] + " " +
+  Key.majorKey(this.choixGamme).triads[0] + " " +
+  Key.majorKey(this.choixGamme).triads[4]
+
+
+this.chordsInMinor =   Key.minorKey(this.choixGamme).natural.triads[0] + " " +
+Key.minorKey(this.choixGamme).natural.triads[3] +" " +
+Key.minorKey(this.choixGamme).natural.triads[0] +" " +
+Key.minorKey(this.choixGamme).natural.triads[4]
+
+
+if (modalite === "major"){
+  console.log("coucou MAJOR");
+  this.chordsProgression = this.chordsInMajor
+}
+if (modalite === "minor") {
+  console.log("coucou MINOR");
+  this.chordsProgression = this.chordsInMinor
+}
 };
 
-//console.log(choixGamme);
+
 
 public objNotesMineur  = [
   {note: "A", position: 1},

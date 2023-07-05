@@ -130,3 +130,19 @@ CAPO TRANSLATER permite modificar el tono de una melodia, sin tener que limitar 
 
 
 Problème : Mettez en évidence les défis auxquels les musiciens sont confrontés lorsqu'ils doivent transposer des notes, tels que les changements de tonalité et les différentes gammes utilisées.
+
+
+
+HEADER'S LOGIN REMOVE:
+<!--       <div class="botonesUser px-3" *ngIf="!user || !successGetter"> -->
+      <div class="botonesUser px-3" *ngIf="!user && !successGetter">
+        <button type="button" routerLink="/account/login" class="btn btn-outline-light border-dark m-2">LOGIN</button>
+        <button type="button" routerLink="/account/register" class="btn border-dark m-2">SIGN UP</button>
+      </div>
+
+<!--       <div class="botonesUserOut navbar navbar-expand navbar-dark p-3 d-flex flex-column" *ngIf="user &&  successGetter"> -->
+      <div class="botonesUserOut navbar navbar-expand navbar-dark p-3 d-flex flex-column" *ngIf="user || successGetter">
+        <!-- <a class="nav-item nav-link" routerLink="/">Home</a> -->
+        <!-- <p> <small> Estás conectado como: {{user?.firstName}} </small></p> -->
+        <button class="btn btn-dark me-2" (click)="compo_Logout()"><i class="fa-sharp fa-solid fa-power-off"> </i>   Logout</button>
+      </div>
